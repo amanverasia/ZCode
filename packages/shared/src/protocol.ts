@@ -5,6 +5,7 @@ import type { ProviderFamilyConnectionSelectionSettings } from "./provider-famil
 import type { ZCodeProvider } from "./zcode-task-types-core.js";
 import type { WorkspacePurpose } from "./workspacePurpose.js";
 import type { EmbeddedBrowserViewportPreference } from "./browser-use/command-metadata.js";
+import type { ModelProfileId, ModelProfilesSettings } from "./modelProfiles.js";
 
 // ── Domain types ──
 
@@ -245,6 +246,13 @@ export interface AppSettings {
    * 覆盖语义为整组替换（如 openCommandCenter 的双默认绑定被覆盖时同时失效）。
    */
   shortcutBindings?: Record<string, string[]>;
+  /**
+   * Vendor-agnostic model profiles (FAST / DEEP / LOCAL / CHEAP).
+   * Each maps to provider/model/thought/params/fallback/timeout/retry — user editable.
+   */
+  modelProfiles?: ModelProfilesSettings;
+  /** Last applied profile id; null/undefined means none active. */
+  activeModelProfileId?: ModelProfileId | null;
   /** 界面语言偏好；locale 保存偏好解析后的实际语言，供 main/menu/远控等非浏览器上下文使用。 */
   localePreference?: LocalePreference;
   /** 是否尽量继承系统终端 profile、shell 环境和字体 */

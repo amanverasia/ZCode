@@ -28,6 +28,11 @@ export type ShortcutCommandId =
   | "openModelMenu"
   | "cycleSessionMode"
   | "cycleThoughtLevel"
+  | "applyModelProfileFast"
+  | "applyModelProfileDeep"
+  | "applyModelProfileLocal"
+  | "applyModelProfileCheap"
+  | "cycleModelProfile"
   | "newTask"
   | "openWorkspace"
   | "closeActiveContext"
@@ -80,6 +85,13 @@ export const SHORTCUT_COMMANDS: readonly ShortcutCommandEntry[] = [
   { id: "openModelMenu", channel: "window", defaultBindings: ["Ctrl+m"] },
   { id: "cycleSessionMode", channel: "window", defaultBindings: ["Ctrl+Shift+m"] },
   { id: "cycleThoughtLevel", channel: "window", defaultBindings: ["Ctrl+t"] },
+  // Model profiles (fork): Ctrl+Alt+letter avoids reserved CmdOrCtrl chords and
+  // Ctrl+Alt+b (toggleSidePane). Digits were illustrative only — not used.
+  { id: "applyModelProfileFast", channel: "window", defaultBindings: ["Ctrl+Alt+f"] },
+  { id: "applyModelProfileDeep", channel: "window", defaultBindings: ["Ctrl+Alt+d"] },
+  { id: "applyModelProfileLocal", channel: "window", defaultBindings: ["Ctrl+Alt+l"] },
+  { id: "applyModelProfileCheap", channel: "window", defaultBindings: ["Ctrl+Alt+c"] },
+  { id: "cycleModelProfile", channel: "window", defaultBindings: ["Ctrl+Alt+p"] },
   { id: "newTask", channel: "menu", defaultBindings: ["CmdOrCtrl+n"] },
   { id: "openWorkspace", channel: "menu", defaultBindings: ["CmdOrCtrl+o"] },
   { id: "closeActiveContext", channel: "menu", defaultBindings: ["CmdOrCtrl+w"] },
