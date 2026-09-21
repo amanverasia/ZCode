@@ -255,6 +255,79 @@ export interface GitRefreshResult {
   branchComparison: GitBranchComparison | null;
 }
 
+export type GitWorktreeMutationAction = "create" | "remove";
+
+export type GitWorktreeMutationIssueCode =
+  | "invalid-worktree-name"
+  | "path-already-exists"
+  | "branch-already-exists"
+  | "branch-in-other-worktree"
+  | "dirty-worktree"
+  | "main-worktree-protected"
+  | "current-worktree-protected"
+  | "worktree-not-found"
+  | "operation-in-progress"
+  | "unknown";
+
+export interface GitWorktreeEntry {
+  path: string;
+  head: string | null;
+  branchName: string | null;
+  headRefType: GitHeadRefType;
+  isMain: boolean;
+  isCurrent: boolean;
+  isLocked: boolean;
+  lockReason: string | null;
+  isPrunable: boolean;
+  isDirty: boolean;
+}
+
+export interface GitWorktreeListResult {
+  workspacePath: string;
+  mainTreePath: string | null;
+  worktrees: GitWorktreeEntry[];
+}
+
+export interface GitCreateWorktreeRequest extends GitRepositoryRequest {
+  /** Short name used for `.worktrees/<name>` and default branch. */
+  name: string;
+  /** Absolute or workspace-relative path override. */
+  path?: string;
+  /** Branch to check out; defaults to `name`. */
+  branchName?: string;
+  /** Create a new branch with `-b` (default true). */
+  createBranch?: boolean;
+  /** Start point for a new branch; defaults to HEAD. */
+  startPoint?: string;
+}
+
+export interface GitRemoveWorktreeRequest extends GitRepositoryRequest {
+  /** Absolute path of the linked worktree to remove. */
+  path: string;
+  /**
+   * When false (default), refuse removal if the target has uncommitted changes.
+   * Force is only for an explicit user confirmation — never silent.
+   */
+  force?: boolean;
+}
+
+export interface GitWorktreeMutationIssue {
+  code: GitWorktreeMutationIssueCode;
+  message: string;
+  paths?: string[];
+  detail?: string | null;
+}
+
+export interface GitWorktreeMutationResult {
+  ok: boolean;
+  action: GitWorktreeMutationAction;
+  path: string | null;
+  branchName: string | null;
+  didChange: boolean;
+  worktrees: GitWorktreeEntry[];
+  issues: GitWorktreeMutationIssue[];
+}
+
 export type GitCheckpointScope = "workspace";
 
 export type GitCheckpointConflictReason =

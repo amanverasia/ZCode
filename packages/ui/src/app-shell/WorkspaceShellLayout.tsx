@@ -36,6 +36,7 @@ import { DesktopWindowFrame } from "@/DesktopWindowFrame.js";
 import { WorkspacePluginPreview } from "@/WorkspacePluginPreview.js";
 import { useIsOfficeMode } from "@/hooks/useInterfaceMode.js";
 import { GitBranchSwitcher } from "@/GitBranchSwitcher.js";
+import { GitWorktreeSwitcher } from "@/GitWorktreeSwitcher.js";
 import { ScopedErrorBoundary } from "@/ErrorBoundary.js";
 
 import { AUTOMATIONS_TOAST_ANCHOR_ID, AutomationsSection } from "@/settings/AutomationsSection.js";
@@ -1198,18 +1199,29 @@ export const WorkspaceShellLayout = memo(function WorkspaceShellLayoutComponent(
             remoteSessionId={workspaceRemoteSessionId ?? undefined}
           />
         ) : !isOfficeMode && activeWorkspacePurpose === "project" ? (
-          <GitBranchSwitcher
-            workspacePath={workspaceAbsPath}
-            gitSummary={gitState.summary}
-            dirtyFileCount={gitDirtyFileCount}
-            onRefreshGit={handleRefreshGit}
-            className="px-0 pt-0"
-            popoverClassName="w-72"
-            branchListClassName="max-h-48"
-            // 输入框区域在底部，Radix 碰撞避让会把分支菜单翻到下方。
-            // 这里锁定上方弹出，避免菜单遮挡输入区并保持操作方向稳定。
-            avoidPopoverCollisions={false}
-          />
+          <>
+            <GitBranchSwitcher
+              workspacePath={workspaceAbsPath}
+              gitSummary={gitState.summary}
+              dirtyFileCount={gitDirtyFileCount}
+              onRefreshGit={handleRefreshGit}
+              className="px-0 pt-0"
+              popoverClassName="w-72"
+              branchListClassName="max-h-48"
+              // 输入框区域在底部，Radix 碰撞避让会把分支菜单翻到下方。
+              // 这里锁定上方弹出，避免菜单遮挡输入区并保持操作方向稳定。
+              avoidPopoverCollisions={false}
+            />
+            <GitWorktreeSwitcher
+              workspacePath={workspaceAbsPath}
+              gitSummary={gitState.summary}
+              onRefreshGit={handleRefreshGit}
+              className="px-0 pt-0"
+              popoverClassName="w-80"
+              listClassName="max-h-48"
+              avoidPopoverCollisions={false}
+            />
+          </>
         ) : null}
       </>
     ),

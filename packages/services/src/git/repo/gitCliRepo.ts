@@ -33,6 +33,11 @@ import {
   type GitCommandProvider,
 } from "../providers/gitCommandProvider.js";
 import {
+  createGitWorktree,
+  listGitWorktrees,
+  removeGitWorktree,
+} from "./gitWorktreeOps.js";
+import {
   buildUntrackedTextDiffResult,
   buildUntrackedStats,
   ensureGitCommandSucceeded,
@@ -1004,6 +1009,39 @@ export function createGitCliRepo(options?: { commandProvider?: GitCommandProvide
           status.summary.headRefType === "branch" ? status.summary.branchName : null,
         ),
       };
+    },
+
+    async listWorktrees(workspacePath: string) {
+      return await listGitWorktrees(
+        {
+          commandProvider,
+          resolveRepository: (path) => this.resolveRepository(path),
+          invalidate,
+        },
+        workspacePath,
+      );
+    },
+
+    async createWorktree(params) {
+      return await createGitWorktree(
+        {
+          commandProvider,
+          resolveRepository: (path) => this.resolveRepository(path),
+          invalidate,
+        },
+        params,
+      );
+    },
+
+    async removeWorktree(params) {
+      return await removeGitWorktree(
+        {
+          commandProvider,
+          resolveRepository: (path) => this.resolveRepository(path),
+          invalidate,
+        },
+        params,
+      );
     },
 
     async getCommitGraph(
