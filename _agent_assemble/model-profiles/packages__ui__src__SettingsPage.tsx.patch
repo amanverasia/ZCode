@@ -1,6 +1,8 @@
+diff --git a/packages/ui/src/SettingsPage.tsx b/packages/ui/src/SettingsPage.tsx
+index 554b0d5..50e3383 100644
 --- a/packages/ui/src/SettingsPage.tsx
 +++ b/packages/ui/src/SettingsPage.tsx
-@@ -70,6 +70,7 @@
+@@ -70,6 +70,7 @@ import { PluginsSection } from "@/settings/PluginsSection.js";
  import { HooksSection } from "@/settings/HooksSection.js";
  import { WorkspaceFileSearchSection } from "@/settings/WorkspaceFileSearchSection.js";
  import { MemorySettingsSection } from "@/settings/MemorySettingsSection.js";
@@ -8,7 +10,7 @@
  import { BrowserSettingsSection } from "@/settings/BrowserSettingsSection.js";
  import { ComputerUseSection } from "@/settings/ComputerUseSection.js";
  import { ShortcutSettingsSection } from "@/settings/ShortcutSettingsSection.js";
-@@ -1821,6 +1822,8 @@
+@@ -1821,6 +1822,8 @@ export function SettingsPage({
                                }
                              />
                            </ServiceProvider>

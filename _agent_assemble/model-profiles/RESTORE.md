@@ -1,11 +1,15 @@
-# Model profiles — remaining large-file patches
+# Apply remaining model-profile UI/i18n wiring
 
-MCP cannot embed ~43–400KB file bodies in `push_files`/`create_or_update_file` args here.
-These are exact GNU diffs from the current GitHub branch tip → local `22c9727` contents.
+Core profile code is already on `main`. These patches finish Settings, composer shortcuts, and i18n (files too large for MCP direct upload).
 
 ```bash
+cd ~/src/ZCode
+git pull --ff-only origin main
 git apply _agent_assemble/model-profiles/*.patch
+# optional cleanup:
+git rm -r _agent_assemble/model-profiles
+git commit -m "fix(ui): apply model-profiles Settings/toolbar/i18n patches"
+git push origin main
 ```
 
-Full tree also on Origin mirror commit `22c9727`:
-`origin.cursor.com/git/amanverasia/tmp-7ce3abd398bd9236` @ `cursor/model-profiles-ad4c`.
+Verified `git apply` clean on `5f4a9f8`.
