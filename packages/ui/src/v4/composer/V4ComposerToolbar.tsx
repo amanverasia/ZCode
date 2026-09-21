@@ -52,6 +52,8 @@ import { ThoughtLevelCycleControl } from "@/chat-input-toolbar/ThoughtLevelCycle
 import { getNextThoughtLevelValue } from "@/chat-input-toolbar/thoughtLevelOptions.js";
 import type { V4ComposerConfigPicker } from "@/v4/composer/configPickerState.js";
 import { useToolbarShortcutBindings } from "@/v4/composer/toolbarShortcuts.js";
+import { useApplyModelProfile } from "@/v4/composer/useApplyModelProfile.js";
+import { useModelProfileShortcutBindings } from "@/v4/composer/modelProfileShortcuts.js";
 import {
   resolveModelSelectTriggerDisplay,
   shouldShowManageModelsAction,
@@ -979,6 +981,16 @@ function V4ComposerModelControlsImpl({
     onOpenModelMenu: handleOpenModelMenuShortcut,
     onCycleThoughtLevel: handleCycleThoughtLevel,
     onCycleSessionMode: noop,
+  });
+  const { applyProfile, cycleProfile } = useApplyModelProfile({
+    disabled: disabled || recoveryPending,
+    onSelectModel,
+    onSelectThought,
+  });
+  useModelProfileShortcutBindings({
+    disabled: disabled || recoveryPending,
+    onApplyProfile: applyProfile,
+    onCycleProfile: cycleProfile,
   });
 
   return (
