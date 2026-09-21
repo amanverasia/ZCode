@@ -10,6 +10,10 @@ import {
   embeddedBrowserViewportPreferenceSchema,
 } from "./browser-use/command-metadata.js";
 import { providerFamilyConnectionSelectionSettingsSchema } from "./provider-family-connection-selection.js";
+import {
+  modelProfileIdSchema,
+  modelProfilesSettingsSchema,
+} from "./modelProfiles.js";
 
 /** 引导职业枚举；单独导出供 onboarding 记录回填 settings 时做窄化校验。 */
 const appSettingsOccupationSchema = z.enum([
@@ -422,6 +426,8 @@ const appSettingsObjectSchema = z.object({
   locale: localeSchema.default("zh-CN"),
   // 快捷键用户覆盖（语义校验在 ui/src/shortcuts 生效表阶段容错，schema 只管形状）
   shortcutBindings: z.record(z.string(), z.array(z.string())).optional(),
+  modelProfiles: modelProfilesSettingsSchema.optional(),
+  activeModelProfileId: modelProfileIdSchema.nullable().optional(),
   localePreference: localePreferenceSchema.default("system"),
   terminalInheritSystemProfile: z.boolean().default(true),
   terminalFontFamily: nonEmptyStringSchema.optional(),
@@ -494,6 +500,8 @@ export const appSettingsPatchSchema = z.object({
   recentProjects: z.array(z.string()).optional(),
   locale: localeSchema.optional(),
   shortcutBindings: z.record(z.string(), z.array(z.string())).optional(),
+  modelProfiles: modelProfilesSettingsSchema.optional(),
+  activeModelProfileId: modelProfileIdSchema.nullable().optional(),
   localePreference: localePreferenceSchema.optional(),
   terminalInheritSystemProfile: z.boolean().optional(),
   terminalFontFamily: nonEmptyStringSchema.optional(),
