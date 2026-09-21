@@ -1,6 +1,8 @@
+diff --git a/packages/ui/src/i18n/locales/en-US.ts b/packages/ui/src/i18n/locales/en-US.ts
+index d2d49ec..baebb1d 100644
 --- a/packages/ui/src/i18n/locales/en-US.ts
 +++ b/packages/ui/src/i18n/locales/en-US.ts
-@@ -1823,6 +1823,11 @@
+@@ -1823,6 +1823,11 @@ const enUS: Record<string, string> = {
    "settings.shortcuts.command.openModelMenu": "Open Model Menu",
    "settings.shortcuts.command.cycleSessionMode": "Cycle Session Mode",
    "settings.shortcuts.command.cycleThoughtLevel": "Cycle Thought Level",
@@ -12,7 +14,7 @@
    "settings.shortcuts.command.findInTask": "Find in Task",
    "settings.shortcuts.command.openCommandCenter": "Open Command Center",
    "settings.shortcuts.command.openSettings": "Open Settings",
-@@ -2220,6 +2225,31 @@
+@@ -2220,6 +2225,31 @@ const enUS: Record<string, string> = {
    "settings.previewBadge.light": "Light",
    "settings.previewBadge.dark": "Dark",
    "settings.modelProviderTitle": "Model settings",

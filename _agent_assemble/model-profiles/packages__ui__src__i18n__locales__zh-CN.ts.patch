@@ -1,6 +1,8 @@
+diff --git a/packages/ui/src/i18n/locales/zh-CN.ts b/packages/ui/src/i18n/locales/zh-CN.ts
+index 7302823..5c57d5d 100644
 --- a/packages/ui/src/i18n/locales/zh-CN.ts
 +++ b/packages/ui/src/i18n/locales/zh-CN.ts
-@@ -1718,6 +1718,11 @@
+@@ -1718,6 +1718,11 @@ const zhCN: Record<string, string> = {
    "settings.shortcuts.command.openModelMenu": "打开模型菜单",
    "settings.shortcuts.command.cycleSessionMode": "切换会话模式",
    "settings.shortcuts.command.cycleThoughtLevel": "切换思考深度",
@@ -12,7 +14,7 @@
    "settings.shortcuts.command.findInTask": "任务内查找",
    "settings.shortcuts.command.openCommandCenter": "打开命令中心",
    "settings.shortcuts.command.openSettings": "打开设置",
-@@ -2091,6 +2096,32 @@
+@@ -2091,6 +2096,31 @@ const zhCN: Record<string, string> = {
    "settings.previewBadge.light": "浅色",
    "settings.previewBadge.dark": "深色",
    "settings.modelProviderTitle": "模型设置",
