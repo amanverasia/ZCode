@@ -2,12 +2,16 @@ import type {
   GitBranchMutationResult,
   GitChangeKind,
   GitCommitGraphCommit,
+  GitCreateWorktreeRequest,
   GitDiffQuery,
   GitDiffResult,
   GitIdentity,
   GitLocalBranchListResult,
   GitPushResult,
+  GitRemoveWorktreeRequest,
   GitRepositorySummary,
+  GitWorktreeListResult,
+  GitWorktreeMutationResult,
   GitWorkspaceRepositoryInfo,
 } from "@zcode/shared";
 
@@ -80,6 +84,9 @@ export interface GitCliRepo {
   ): Promise<GitCommitGraphSnapshot>;
   getIgnoredPaths(workspacePath: string, paths: string[]): Promise<string[]>;
   listLocalBranches(workspacePath: string): Promise<GitLocalBranchListResult>;
+  listWorktrees(workspacePath: string): Promise<GitWorktreeListResult>;
+  createWorktree(params: GitCreateWorktreeRequest): Promise<GitWorktreeMutationResult>;
+  removeWorktree(params: GitRemoveWorktreeRequest): Promise<GitWorktreeMutationResult>;
   switchBranch(workspacePath: string, targetBranchName: string): Promise<GitBranchMutationResult>;
   createBranchAndSwitch(
     workspacePath: string,

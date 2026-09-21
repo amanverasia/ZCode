@@ -78,6 +78,7 @@ import { ControlHintTooltip } from "@/ControlHintTooltip.js";
 import { formatBackgroundTaskElapsedLabel } from "@/BackgroundTaskElapsedLabel.js";
 import { GitActionMenu } from "@/GitActionMenu.js";
 import { GitBranchSwitcher } from "@/GitBranchSwitcher.js";
+import { GitWorktreeSwitcher } from "@/GitWorktreeSwitcher.js";
 import { useZCodeIntl } from "@/i18n/IntlProvider.js";
 import type {
   OpenPlanDetailSideTabRequest,
@@ -439,6 +440,16 @@ function GitStatusSection({
           branchListClassName="max-h-56"
           popoverSide={useVerticalFloatingPanels ? "bottom" : "left"}
           showFooterActions
+        />
+        <GitWorktreeSwitcher
+          workspacePath={workspacePath}
+          gitSummary={gitSummary}
+          onRefreshGit={onRefreshGit}
+          className="w-full px-0 pt-0"
+          triggerClassName="flex h-8 w-full min-w-0 justify-start gap-2 rounded-lg px-2 text-left text-ui-base text-[var(--color-foreground)] hover:bg-[var(--color-hover)] hover:text-[var(--color-foreground)]"
+          popoverClassName="w-80 max-w-[calc(100vw-2rem)]"
+          listClassName="max-h-56"
+          popoverSide={useVerticalFloatingPanels ? "bottom" : "left"}
         />
         <GitActionMenu
           workspacePath={workspacePath}

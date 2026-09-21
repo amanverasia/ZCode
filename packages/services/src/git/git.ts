@@ -4,6 +4,7 @@ import type {
   GitCommitGraphRequest,
   GitCommitGraphResult,
   GitCreateBranchRequest,
+  GitCreateWorktreeRequest,
   GitChangesRequest,
   GitCommitRequest,
   GitCommitResult,
@@ -20,8 +21,11 @@ import type {
   GitPushResult,
   GitRefreshRequest,
   GitRefreshResult,
+  GitRemoveWorktreeRequest,
   GitRepositoryRequest,
   GitRepositorySummary,
+  GitWorktreeListResult,
+  GitWorktreeMutationResult,
   GitWorkspaceRepositoryInfo,
   GitFileChange,
   GitSwitchBranchRequest,
@@ -34,6 +38,9 @@ export interface IGitService {
   getWorkspaceRepositoryInfo(params: GitRepositoryRequest): Promise<GitWorkspaceRepositoryInfo>;
   getLocalBranches(params: GitRepositoryRequest): Promise<GitLocalBranchListResult>;
   getCommitGraph(params: GitCommitGraphRequest): Promise<GitCommitGraphResult>;
+  listWorktrees(params: GitRepositoryRequest): Promise<GitWorktreeListResult>;
+  createWorktree(params: GitCreateWorktreeRequest): Promise<GitWorktreeMutationResult>;
+  removeWorktree(params: GitRemoveWorktreeRequest): Promise<GitWorktreeMutationResult>;
   switchBranch(params: GitSwitchBranchRequest): Promise<GitBranchMutationResult>;
   createBranchAndSwitch(params: GitCreateBranchRequest): Promise<GitBranchMutationResult>;
   getChanges(params: GitChangesRequest): Promise<GitFileChange[]>;

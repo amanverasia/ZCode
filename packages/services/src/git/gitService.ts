@@ -199,6 +199,18 @@ export function createGitService(options?: {
       };
     },
 
+    async listWorktrees(params) {
+      return await repo.listWorktrees(params.workspacePath);
+    },
+
+    async createWorktree(params) {
+      return await repo.createWorktree(params);
+    },
+
+    async removeWorktree(params) {
+      return await repo.removeWorktree(params);
+    },
+
     async switchBranch(params) {
       return await repo.switchBranch(params.workspacePath, params.targetBranchName);
     },
