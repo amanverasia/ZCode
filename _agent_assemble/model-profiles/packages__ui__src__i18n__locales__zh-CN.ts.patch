@@ -12,7 +12,7 @@
    "settings.shortcuts.command.findInTask": "任务内查找",
    "settings.shortcuts.command.openCommandCenter": "打开命令中心",
    "settings.shortcuts.command.openSettings": "打开设置",
-@@ -2091,6 +2096,31 @@
+@@ -2091,6 +2096,32 @@
    "settings.previewBadge.light": "浅色",
    "settings.previewBadge.dark": "深色",
    "settings.modelProviderTitle": "模型设置",
@@ -34,6 +34,7 @@
 +  "settings.modelProfiles.providerIdHint": "与「模型设置」中的供应商 ID 完全一致（内置或自定义）。",
 +  "settings.modelProfiles.modelId": "模型 ID",
 +  "settings.modelProfiles.thoughtLevel": "思考 / 推理档位",
++  "settings.modelProfiles.thoughtLevelHint": "须与所选模型提供的档位一致（无则留空）。",
 +  "settings.modelProfiles.temperature": "温度",
 +  "settings.modelProfiles.timeoutMs": "超时（毫秒）",
 +  "settings.modelProfiles.maxRetries": "最大重试次数",
